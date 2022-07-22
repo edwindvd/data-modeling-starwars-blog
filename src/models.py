@@ -37,7 +37,7 @@ class Planets(Base):
     # Here we define columns for the table person
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
-    favoritos_id = Column(Integer, ForeignKey('favoritos.id'))
+    # favoritos_id = Column(Integer, ForeignKey('favoritos.id'))
     personajes_id = Column(Integer, ForeignKey('personajes.id'))
     name = Column(String(250), nullable=False)
     gravity = Column(String(250), nullable=False)
@@ -47,8 +47,8 @@ class Personajes(Base):
     # Here we define columns for the table person
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
-    favoritos_id = Column(Integer, ForeignKey('favoritos.id'))
-    planets_id = Column(Integer, ForeignKey('planets.id'))
+    # favoritos_id = Column(Integer, ForeignKey('favoritos.id'))
+    # planets_id = Column(Integer, ForeignKey('planets.id'))
     name = Column(String(250), nullable=False)
     clasificacion = Column(String(250), nullable=False)
     lenguaje = Column(String(250), nullable=False)
@@ -57,4 +57,4 @@ class Personajes(Base):
         return {}
 
 ## Draw from SQLAlchemy base
-render_er(Base, 'diagram2.png')
+render_er(Base, 'diagram4.png')
