@@ -9,9 +9,8 @@ from eralchemy import render_er
 Base = declarative_base()
 
 class User(Base):
-    __tablename__ = 'usuario'
+    __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
-    favoritos_id = Column(Integer, ForeignKey('favoritos.id'))
     name = Column(String(250), nullable=False)
     address1 = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
@@ -22,20 +21,20 @@ class Favoritos(Base):
     __tablename__ = 'favoritos'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'))
-    personajes = relationship('Personajes')
-    planets = relationship('Planets')
+    personaje_id = Column(Integer, ForeignKey('personajes.id'), nullable=True)
+    planet_id = Column(Integer, ForeignKey('planets.id'), nullable=True)
 
 class Planets(Base):
     __tablename__ = 'planets'
     id = Column(Integer, primary_key=True)
-    favoritos_id = Column(Integer, ForeignKey('favoritos.id'))
+    favoritos = relationship('Favoritos')
     name = Column(String(250), nullable=False)
     gravity = Column(String(250), nullable=False)
 
 class Personajes(Base):
     __tablename__ = 'personajes'
     id = Column(Integer, primary_key=True)
-    favoritos_id = Column(Integer, ForeignKey('favoritos.id'))
+    favoritos = relationship('Favoritos')
     name = Column(String(250), nullable=False)
     clasificacion = Column(String(250), nullable=False)
     lenguaje = Column(String(250), nullable=False)
